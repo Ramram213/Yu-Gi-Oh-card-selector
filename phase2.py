@@ -8,7 +8,7 @@ data = response.json()["data"]
 card_types = set(card["type"] for card in data)
 
 st.title("Yu-Gi-Oh! Card Explorer")  #1 New
-st.image("images/yugioh.jpg", use_column_width=True)
+st.image("/full/path/to/your/images/yugioh.jpg", use_column_width=True)
 st.write("instructions: Filter down to the specific Yu-Gi-Oh! card that you want for information about the card.")
 
 selected_type = st.selectbox("Filter by Card Type", ["All"] + sorted(card_types))  #2 New
