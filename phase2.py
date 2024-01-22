@@ -5,10 +5,12 @@ api_url = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 response = requests.get(api_url)
 data = response.json()["data"]
 
+
 card_types = set(card["type"] for card in data)
 
-st.title("Yu-Gi-Oh! Card Explorer")
-st.image("yugioh.jpg", use_column_width=True)
+centered_title = "<h1 style='text-align: center;'>Yu-Gi-Oh! Card Explorer</h1>"
+st.markdown(centered_title, unsafe_allow_html=True)
+st.image("https://m.media-amazon.com/images/M/MV5BMDM0MDA3NzYtMDE1MS00YjZmLWJmNjQtNzgxYzlhMmMyZjQ2XkEyXkFqcGdeQXVyNjk1Njg5NTA@._V1_FMjpg_UX1000_.jpg")
 st.write("Instructions: Filter down to the specific Yu-Gi-Oh! card that you want for information about the card.")
 
 selected_type = st.selectbox("Filter by Card Type", ["All"] + sorted(card_types))
@@ -33,7 +35,8 @@ if selected_card_data:
     st.write(f" **Attack Power:** {selected_card_data.get('atk', 'N/A')}")
     st.write(f" **Defense Power:** {selected_card_data.get('def', 'N/A')}")
     st.write(" **Image:** ")
-    st.image(selected_card_data['card_images'][0]['image_url'], caption="Card Image", width=650)
+    st.image(selected_card_data['card_images'][0]['image_url'], caption="Card Image")
+
 
 
 
