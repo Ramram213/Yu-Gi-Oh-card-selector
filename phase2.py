@@ -7,13 +7,12 @@ data = response.json()["data"]
 
 card_types = set(card["type"] for card in data)
 
-st.title("Yu-Gi-Oh! Card Explorer")  #1 New
-st.image("/full/path/to/your/images/yugioh.jpg", use_column_width=True)
-st.write("instructions: Filter down to the specific Yu-Gi-Oh! card that you want for information about the card.")
+st.title("Yu-Gi-Oh! Card Explorer")
+st.image("yugioh.jpg", use_column_width=True)
+st.write("Instructions: Filter down to the specific Yu-Gi-Oh! card that you want for information about the card.")
 
-selected_type = st.selectbox("Filter by Card Type", ["All"] + sorted(card_types))  #2 New
-
-attack_power = st.number_input("Attack Power", min_value=0, value=0) #3 New
+selected_type = st.selectbox("Filter by Card Type", ["All"] + sorted(card_types))
+attack_power = st.number_input("Attack Power", min_value=0, value=0)
 defense_power = st.number_input("Defense Power", min_value=0, value=0)
 
 filtered_cards = [
@@ -33,7 +32,7 @@ if selected_card_data:
     st.write(f" **Type:** {selected_card_data['type']}")
     st.write(f" **Attack Power:** {selected_card_data.get('atk', 'N/A')}")
     st.write(f" **Defense Power:** {selected_card_data.get('def', 'N/A')}")
-    st.write(" **image:** ")
+    st.write(" **Image:** ")
     st.image(selected_card_data['card_images'][0]['image_url'], caption="Card Image", width=650)
 
 
