@@ -21,7 +21,7 @@ filtered_cards = [
     card for card in data
     if (selected_type == "All" or card["type"] == selected_type) and
        (attack_power is None or card.get('atk', 0) >= attack_power) and
-       (defense_power is None or card.get('def', 0) >= defense_power)
+       (defense_power is None or card.get('def', 0) >= defense_power if card.get('def') is not None else True)
 ]
 
 selected_card = st.selectbox("Select a Yu-Gi-Oh! Card", sorted(set(card["name"] for card in filtered_cards)))
